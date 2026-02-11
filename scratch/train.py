@@ -82,11 +82,11 @@ iterations = 10000
 batch_size = 100
 learning_rate = 0.01
 
-# 正答率のリスト
+# 正解率のリスト
 acc_list = []
 
 # 学習
-for i in tqdm(range(iterations)):
+for _ in tqdm(range(iterations)):
     batch_mask = np.random.choice(data.shape[0], batch_size)
     data_batch = data[batch_mask]
     t_batch = t[batch_mask]
@@ -102,7 +102,7 @@ for i in tqdm(range(iterations)):
     t_batch = t[batch_mask]
     acc_list.append(network.accuracy(data_batch, t_batch))
 
-# 正答率グラフ表示(対トレーニングデータ)
+# トレーニングデータに対する正解率(*テストデータに対して行うべきもの)
 plt.plot(range(iterations), acc_list)
 plt.show()
 
